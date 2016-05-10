@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>My template</title>
+</head>
+<body>
+	<h1>Do lo hagas</h1>
+	<ul>
+		{% for c in choices %}
+			<li>{{ c.choice_text }}</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>
