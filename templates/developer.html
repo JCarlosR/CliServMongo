@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	{% load staticfiles %}
+	<meta charset="UTF-8">
+	<title>Inicio</title>
+
+	<!-- Compiled and minified CSS -->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<h1>{{ developer.name }}</h1>
+		
+		<h3>Listado de lenguajes de programación</h3>
+		<div class="row">
+			{% for l in developer.languages %}
+	        <div class="col s12 m4">
+	        	<div class="card">
+	            	<div class="card-content">
+	              		<span class="card-title">{{ l.name }}</span>
+	            	</div>
+	          	</div>
+	        </div>
+	        {% endfor %}
+	  	</div>
+
+	  	<h3>Añadir nuevo lenguaje</h3>
+	  	<form class="col s12" method="POST">
+			{% csrf_token %}
+
+      		<div class="row">
+		    	<div class="input-field col s6">
+		          <input name="name" type="text" class="validate" required>
+		          <label for="name">Nuevo lenguaje</label>
+		        </div>
+	        </div>
+
+	        <button class="btn waves-effect waves-light" type="submit" name="action">Añadir
+		    	<i class="material-icons right">send</i>
+		    </button>
+	    </form>
+	</div>
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+</body>
+</html>

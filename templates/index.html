@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+	{% load staticfiles %}
 	<meta charset="UTF-8">
-	<title>My template</title>
+	<title>Inicio</title>
+
+	<!-- Compiled and minified CSS -->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-	<h1>Do lo hagas</h1>
-	<ul>
-		{% for c in choices %}
-			<li>{{ c.choice_text }}</li>
-		{% endfor %}
-	</ul>
+	<div class="container">
+		<h1>Desarrolladores</h1>
+		
+		<div class="row">
+			{% for d in developers %}
+	        <div class="col s12 m4">
+	        	<div class="card">
+	            	<div class="card-content">
+	              	<span class="card-title">{{ d.name }}</span>
+						<p><strong>Área:</strong> {{ d.area }}</p>
+	              		<p><strong>Años de experiencia:</strong> {{ d.years }}</p>
+	            	</div>
+	            	<div class="card-action">
+	              		<a href="desarrollador/{{ d.slug }}">Ver lenguajes</a>
+	            	</div>
+	          	</div>
+	        </div>
+	        {% endfor %}
+	  	</div>
+
+	  	<div class="row">
+	  		<div class="col s12 m6">
+	  			<a href="desarrollador/registrar" class="waves-effect waves-light btn">Registrar nuevo desarrollador</a>
+	  		</div>
+	  	</div>
+	</div>
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 </body>
 </html>

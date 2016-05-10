@@ -5,11 +5,20 @@ from django.db import models
 # Create your models here.
 from mongoengine import *
 
-class Choice(EmbeddedDocument):
-    choice_text = StringField(max_length=200)
-    votes = IntField(default=0)
+class Language(EmbeddedDocument):
+	name = StringField(max_length=100)
 
-class Poll(Document):
-    question = StringField(max_length=200)
-    pub_date = DateTimeField(help_text='date published')
-    choices = ListField(EmbeddedDocumentField(Choice))
+class Developer(Document):
+    name = StringField(max_length=200)
+    years = IntField(min_value=0)
+    register_date = DateTimeField(help_text='registered date')
+    languages = ListField(EmbeddedDocumentField(Language))
+    area = StringField(max_length=200)
+
+    @property
+    def slug(self): 
+		return self.name.replace(" ", "_")
+
+class Area(Document):
+    name = StringField(max_length=200)
+    
