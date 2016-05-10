@@ -77,6 +77,16 @@ WSGI_APPLICATION = 'CliServMongo.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 import mongoengine
 
+_MONGODB_USER = 'jcarlos17'
+_MONGODB_PASSWD = '123123'
+_MONGODB_HOST = 'ds011872.mlab.com:11872'
+_MONGODB_NAME = 'cliserv'
+_MONGODB_DATABASE_HOST = \
+    'mongodb://%s:%s@%s/%s' \
+    % (_MONGODB_USER, _MONGODB_PASSWD, _MONGODB_HOST, _MONGODB_NAME)
+
+mongoengine.connect(_MONGODB_NAME, host=_MONGODB_DATABASE_HOST)
+
 DATABASES = {
     'default': {
         'ENGINE': ''
